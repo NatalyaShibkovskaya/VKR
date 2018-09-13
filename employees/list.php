@@ -16,11 +16,12 @@ else:
     <html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <title>Авторизация</title>
+        <title>Сотрудники</title>
         <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
         <link rel="stylesheet" href="../css/bootstrap-reboot.min.css">
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
         <script src="../js/bootstrap.min.js"></script>
     </head>
     <body>
@@ -53,13 +54,13 @@ else:
                         <th>отчество</th>
                         <th>дата рождения</th>
                         <th>паспортные данные</th>
-                        <th>место прописки</th>
-                        <th>место проживания</th>
+<!--                        <th>место прописки</th>-->
+<!--                        <th>место проживания</th>-->
                         <th>ИНН</th>
-                        <th>СНИЛС</th>
-                        <th>контактный телефон</th>
-                        <th>дата приема</th>
-                        <th>дата увольнения</th>
+<!--                        <th>СНИЛС</th>-->
+<!--                        <th>контактный телефон</th>-->
+<!--                        <th>дата приема</th>-->
+<!--                        <th>дата увольнения</th>-->
                         <th>статус</th>
                         <th>&nbsp;</th>
                     </tr>
@@ -67,23 +68,26 @@ else:
                     <tbody>
                     <?php
                         foreach ($list as $value) {
-                            echo "<tr>
-                                <td>".$value['id_empl']."</td>
-                                <td>".$value['first_name']."</td>
-                                <td>".$value['second_name']."</td>
-                                <td>".$value['patronymic']."</td>
-                                <td>".$value['date_of_birth']."</td>
-                                <td>".$value['pasport']."</td>
-                                <td>".$value['place_of_residence']."</td>
-                                <td>".$value['actual_residence']."</td>
-                                <td>".$value['tax_numb']."</td>
-                                <td>".$value['ins_numb']."</td>
-                                <td>".$value['telephon_numb']."</td>
-                                <td>".$value['date_of_reseipt']."</td>
-                                <td>".$value['date_of_dismissal']."</td>
-                                <td>".$value['status']."</td>
-                                <td></td>
-                            </tr>";
+                            echo "<tr>".
+                                "<td>".$value['id_empl']."</td>".
+                                "<td>".$value['first_name']."</td>".
+                                "<td>".$value['second_name']."</td>".
+                                "<td>".$value['patronymic']."</td>".
+                                "<td>".$value['date_of_birth']."</td>".
+                                "<td>".$value['pasport']."</td>".
+//                                "<td>".$value['place_of_residence']."</td>".
+//                                "<td>".$value['actual_residence']."</td>".
+                                "<td>".$value['tax_numb']."</td>".
+//                                "<td>".$value['ins_numb']."</td>".
+//                                "<td>".$value['telephon_numb']."</td>".
+//                                "<td>".$value['date_of_reseipt']."</td>".
+//                                "<td>".$value['date_of_dismissal']."</td>".
+                                "<td>".$value['status']."</td>".
+                                "<td>
+                                    <a href='/employees/read.php?id=".$value['id_empl']."'><span class='oi oi-pencil'></span></a>
+                                    <a href='/employees/delete.php?id=".$value['id_empl']."'><span class='oi oi-trash'></span></a>
+                                </td>".
+                            "</tr>";
                         }
                     ?>
                     </tbody>
