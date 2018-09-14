@@ -5,11 +5,8 @@ if (!isset($_SESSION["session_username"])):
     header("location:login.php");
 else:
     require_once("../connection.php");
-    $query = pg_query('SELECT * FROM "DOP".employees');
-    $list = [];
-    while ($row = pg_fetch_assoc($query)) {
-        $list[] = $row;
-    }
+    $query = pg_query('SELECT * FROM "DOP".employees WHERE id_empl=' . $_GET['id']);
+    $employee = pg_fetch_assoc($query);
     ?>
 
     <!DOCTYPE html>
@@ -29,9 +26,9 @@ else:
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"><a class="nav-link" href="/employees/list.php">Сотрудники</a></li>
-                <li class="nav-item"><a class="nav-link" href="/">Табель</a></li>
-                <li class="nav-item"><a class="nav-link" href="/">Пропуски</a></li>
-                <li class="nav-item"><a class="nav-link" href="/">Документы</a></li>
+                <li class="nav-item"><a class="nav-link" href="/time_sheets">Табель</a></li>
+                <li class="nav-item"><a class="nav-link" href="/absense">Пропуски</a></li>
+                <li class="nav-item"><a class="nav-link" href="/documents">Документы</a></li>
             </ul>
             <ul class="navbar-nav n">
                 <li class="nav-item">
@@ -43,7 +40,7 @@ else:
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Сотрудники</h2>
+                <h2>Сотрудник <?=$employee['first_name'] . ' ' . $employee['second_name']; ?></h2>
             </div>
         </div>
     </div>

@@ -1,15 +1,15 @@
-CREATE DATABASE "VKR"
-  WITH ENCODING='UTF8'
-       CONNECTION LIMIT=-1;
-CREATE SCHEMA IF NOT EXISTS "DOP";
+-- CREATE DATABASE "VKR"
+--   WITH ENCODING='UTF8'
+--        CONNECTION LIMIT=-1;
+-- CREATE SCHEMA IF NOT EXISTS "DOP";
 SET SCHEMA 'DOP';
 CREATE TABLE "employees" (
 	"id_empl" serial NOT NULL,
 	"first_name" varchar(50) NOT NULL,
 	"date_of_birth" DATE NOT NULL,
 	"pasport" varchar NOT NULL,
-	" place_of_residence" varchar(2000) NOT NULL,
-	" actual_residence" varchar(2000) NOT NULL,
+	"place_of_residence" varchar(2000) NOT NULL,
+	"actual_residence" varchar(2000) NOT NULL,
 	"tax_numb" int NOT NULL,
 	"ins_numb" bigint NOT NULL,
 	"telephon_numb" bigint NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE "employees" (
 	"date_of_dismissal" DATE NOT NULL,
 	"status" int NOT NULL,
 	"second_name" varchar(50) NOT NULL,
-	" patronymic" varchar(50),
+	"patronymic" varchar(50),
 	CONSTRAINT employees_pk PRIMARY KEY ("id_empl")
 ) WITH (
   OIDS=FALSE
