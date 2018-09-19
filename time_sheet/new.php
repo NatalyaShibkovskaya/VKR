@@ -50,7 +50,11 @@ else:
                     <div class="form-group">
                         <label for="actual">Количество реально отработанных часов</label>
                         <input type="text" class="form-control" id="actual" name="actual" required="required"/>
+<<<<<<< HEAD
                     </div>                    
+=======
+                    </div>
+>>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
                     <div class="form-group">
                         <label for="year">Год</label>
                         <input type="text" class="form-control" id="year" name="year" required="required"/>

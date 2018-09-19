@@ -5,10 +5,14 @@ if (!isset($_SESSION["session_username"])):
     header("location:login.php");
 else:
     require_once("../connection.php");
+<<<<<<< HEAD
     $query = pg_query('SELECT * FROM "DOP".employees e 
         LEFT JOIN "DOP".statuses s ON e.status = s.id_stat
         LEFT JOIN "DOP".divisions d ON e.division = d.id_div
         LEFT JOIN "DOP".positions p ON e.position = p.id_pos');
+=======
+    $query = pg_query('SELECT * FROM "DOP".employees e LEFT JOIN "DOP".statuses s ON e.status = s.id_stat');
+>>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
     $list = [];
     while ($row = pg_fetch_assoc($query)) {
         $list[] = $row;
@@ -51,6 +55,7 @@ else:
                     <thead>
                     <tr>
                         <th>#</th>
+<<<<<<< HEAD
                         <th>Имя</th>
                         <th>Фамилия</th>
                         <th>Отчество</th>
@@ -64,6 +69,15 @@ else:
                         <th>Статус</th>
                         <th>Отдел</th>
                         <th>Должность</th>
+=======
+                        <th>имя</th>
+                        <th>фамилия</th>
+                        <th>отчество</th>
+                        <th>дата рождения</th>
+                        <th>паспортные данные</th>
+                        <th>ИНН</th>
+                        <th>статус</th>
+>>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
@@ -77,6 +91,7 @@ else:
                                 "<td>".$value['patronymic']."</td>".
                                 "<td>".$value['date_of_birth']."</td>".
                                 "<td>".$value['pasport']."</td>".
+<<<<<<< HEAD
                                 "<td>".$value['place_of_residence']."</td>".
                                 "<td>".$value['actual_residence']."</td>".
                                 "<td>".$value['telephon_numb']."</td>".
@@ -85,6 +100,10 @@ else:
                                 "<td>".$value['name_stat']."</td>".
                                 "<td>".$value['name_div']."</td>".
                                 "<td>".$value['name_pos']."</td>".
+=======
+                                "<td>".$value['tax_numb']."</td>".
+                                "<td>".$value['name_stat']."</td>".
+>>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
                                 "<td>
                                     <a href='/employees/read.php?id=".$value['id_empl']."'><span class='oi oi-pencil'></span></a>
                                     <a href='/employees/delete.php?id=".$value['id_empl']."'><span class='oi oi-trash'></span></a>
