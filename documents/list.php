@@ -53,7 +53,11 @@ else:
                         <th>Сотрудник</th>
                         <th>Дата документа</th>
                         <th>Действие</th>
+<<<<<<< HEAD
+                        <th>Номер</th>
+=======
                         <th>Нолмер</th>
+>>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
                         <th>&nbsp;</th>
                     </tr>
                     </thead>

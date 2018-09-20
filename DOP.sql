@@ -14,10 +14,20 @@ CREATE TABLE "employees" (
   "ins_numb"           bigint        NOT NULL,
   "telephon_numb"      bigint        NOT NULL,
   "date_of_reseipt"    DATE          NOT NULL,
+<<<<<<< HEAD
+  "date_of_dismissal"  DATE          ,
+  "status"             int           NOT NULL,
+  "second_name"        varchar(50)   NOT NULL,
+  "patronymic"         varchar(50),
+  "division"           int           NOT NULL,
+  "position"           int           NOT NULL,
+  "payment"            int           NOT NULL,
+=======
   "date_of_dismissal"  DATE          NOT NULL,
   "status"             int           NOT NULL,
   "second_name"        varchar(50)   NOT NULL,
   "patronymic"         varchar(50),
+>>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
   CONSTRAINT employees_pk PRIMARY KEY ("id_empl")
 ) WITH (
 OIDS = FALSE

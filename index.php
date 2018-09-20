@@ -18,6 +18,11 @@ if (isset($_POST["login"])) {
                 $dbusername = $row['name_log'];
                 $dbpassword = $row['pwd_hash'];
             }
+<<<<<<< HEAD
+            echo "$dbusername / $dbpassword";
+                        echo "$username / $password";
+=======
+>>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
             if ($username == $dbusername && $password == $dbpassword) {
                 $_SESSION['session_username'] = $username;
                 header("Location: intropage.php");
