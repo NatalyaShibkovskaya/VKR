@@ -18,7 +18,7 @@ else:
         ins_numb = ".$_POST['ins_numb'].", 
         telephon_numb = ".$_POST['telephon_numb'].", 
         date_of_reseipt = '".$_POST['date_of_reseipt']."', 
-        date_of_dismissal = '".$_POST['date_of_dismissal']."', 
+        date_of_dismissal = ".(empty($_POST['date_of_dismissal']) ? "null," : "'" . $_POST['date_of_dismissal'] . "',")." 
         status = ".$_POST['status'].", 
         second_name = '".$_POST['second_name']."', 
         patronymic = '".$_POST['patronymic']."'

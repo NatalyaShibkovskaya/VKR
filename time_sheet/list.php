@@ -5,14 +5,10 @@ if (!isset($_SESSION["session_username"])):
     header("location:login.php");
 else:
     require_once("../connection.php");
-<<<<<<< HEAD
     $query = pg_query('SELECT * FROM "DOP".time_sheet t 
         LEFT JOIN "DOP".employees e ON t.id_empl = e.id_empl
         LEFT JOIN "DOP".causes c ON t.time_causes = c.caus_name
         LEFT JOIN "DOP".absence a ON t.time_absence = a.absence');
-=======
-    $query = pg_query('SELECT * FROM "DOP".time_sheet t LEFT JOIN "DOP".employees e ON t.id_empl = e.id_empl');
->>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
     $list = [];
     while ($row = pg_fetch_assoc($query)) {
         $list[] = $row;
@@ -57,11 +53,8 @@ else:
                         <th>#</th>
                         <th>Норма по производственному календарю</th>
                         <th>Количество реально отработанных часов</th>
-<<<<<<< HEAD
                         <th>Количество пропущенных часов</th>
                         <th>Причина</th>
-=======
->>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
                         <th>Период</th>
                         <th>Сотрудник</th>
                         <th>&nbsp;</th>
@@ -74,11 +67,8 @@ else:
                                 "<td>".$value['id_time']."</td>".
                                 "<td>".$value['specification']."</td>".
                                 "<td>".$value['actual']."</td>".
-<<<<<<< HEAD
                                 "<td>".$value['absence']."</td>".
                                 "<td>".$value['caus_name']."</td>".
-=======
->>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
                                 "<td>".$value['month']."</td>".
                                 "<td>".$value['first_name']." " . $value['second_name'] . "</td>".
                                 "<td>
