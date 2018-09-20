@@ -5,14 +5,14 @@ if (!isset($_SESSION["session_username"])):
     header("location:login.php");
 else:
     require_once("../connection.php");
-<<<<<<< HEAD
-    $query = pg_query('SELECT * FROM "DOP".employees e 
+    $sql = 'SELECT * FROM "DOP".employees e 
         LEFT JOIN "DOP".statuses s ON e.status = s.id_stat
         LEFT JOIN "DOP".divisions d ON e.division = d.id_div
-        LEFT JOIN "DOP".positions p ON e.position = p.id_pos');
-=======
-    $query = pg_query('SELECT * FROM "DOP".employees e LEFT JOIN "DOP".statuses s ON e.status = s.id_stat');
->>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
+        LEFT JOIN "DOP".positions p ON e.position = p.id_pos';
+    if (!empty($_GET['q'])) {
+        $sql .= ' WHERE LOWER(e.second_name) LIKE \'%' . mb_strtolower($_GET['q']).'%\'';
+    }
+    $query = pg_query($sql);
     $list = [];
     while ($row = pg_fetch_assoc($query)) {
         $list[] = $row;
@@ -51,25 +51,17 @@ else:
             <div class="col-md-12">
                 <h2>Сотрудники</h2>
                 <a href="new.php" class="btn btn-success">Добавить</a>
+                <form method="get">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" placeholder="Поиск" name="q" value="<?=$_GET['q'];?>"/>
+                        </div>
+                    </div>
+                </form>
                 <table class="table">
                     <thead>
                     <tr>
                         <th>#</th>
-<<<<<<< HEAD
-                        <th>Имя</th>
-                        <th>Фамилия</th>
-                        <th>Отчество</th>
-                        <th>Дата рождения</th>
-                        <th>Паспортные данные</th>
-                        <th>Место прописки</th>
-                        <th>Место проживания</th>
-                        <th>Телефон</th>
-                        <th>ИНН</th>
-                        <th>СНИЛС</th>
-                        <th>Статус</th>
-                        <th>Отдел</th>
-                        <th>Должность</th>
-=======
                         <th>имя</th>
                         <th>фамилия</th>
                         <th>отчество</th>
@@ -77,7 +69,6 @@ else:
                         <th>паспортные данные</th>
                         <th>ИНН</th>
                         <th>статус</th>
->>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
@@ -91,19 +82,8 @@ else:
                                 "<td>".$value['patronymic']."</td>".
                                 "<td>".$value['date_of_birth']."</td>".
                                 "<td>".$value['pasport']."</td>".
-<<<<<<< HEAD
-                                "<td>".$value['place_of_residence']."</td>".
-                                "<td>".$value['actual_residence']."</td>".
-                                "<td>".$value['telephon_numb']."</td>".
-                                "<td>".$value['tax_numb']."</td>".
-                                "<td>".$value['ins_numb']."</td>".
-                                "<td>".$value['name_stat']."</td>".
-                                "<td>".$value['name_div']."</td>".
-                                "<td>".$value['name_pos']."</td>".
-=======
                                 "<td>".$value['tax_numb']."</td>".
                                 "<td>".$value['name_stat']."</td>".
->>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
                                 "<td>
                                     <a href='/employees/read.php?id=".$value['id_empl']."'><span class='oi oi-pencil'></span></a>
                                     <a href='/employees/delete.php?id=".$value['id_empl']."'><span class='oi oi-trash'></span></a>

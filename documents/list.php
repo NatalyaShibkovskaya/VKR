@@ -5,9 +5,13 @@ if (!isset($_SESSION["session_username"])):
     header("location:login.php");
 else:
     require_once("../connection.php");
-    $query = pg_query('SELECT * FROM "DOP".documents d 
+    $sql = 'SELECT * FROM "DOP".documents d 
       LEFT JOIN "DOP".employees e ON d.id_empl = e.id_empl
-      LEFT JOIN "DOP".actions a ON d.action = a.id_act');
+      LEFT JOIN "DOP".actions a ON d.action = a.id_act';
+    if (!empty($_GET['q'])) {
+        $sql .= ' WHERE LOWER(e.second_name) LIKE \'%' . mb_strtolower($_GET['q']).'%\'';
+    }
+    $query = pg_query($sql);
     $list = [];
     while ($row = pg_fetch_assoc($query)) {
         $list[] = $row;
@@ -46,6 +50,13 @@ else:
             <div class="col-md-12">
                 <h2>Документы</h2>
                 <a href="new.php" class="btn btn-success">Добавить</a>
+                <form method="get">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" placeholder="Поиск" name="q" value="<?=$_GET['q'];?>"/>
+                        </div>
+                    </div>
+                </form>
                 <table class="table">
                     <thead>
                     <tr>
@@ -53,11 +64,7 @@ else:
                         <th>Сотрудник</th>
                         <th>Дата документа</th>
                         <th>Действие</th>
-<<<<<<< HEAD
                         <th>Номер</th>
-=======
-                        <th>Нолмер</th>
->>>>>>> d02e9ead2fc2925b78f1818ead7fdef5f4cba99c
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
