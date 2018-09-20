@@ -32,7 +32,7 @@ else:
         $_POST['ins_numb'] . ',' .
         $_POST['telephon_numb'] . ',' .
         "'" . $_POST['date_of_reseipt'] . "',".
-        "'" . $_POST['date_of_dismissal'] . "',".
+        (empty($_POST['date_of_dismissal']) ? "null," : "'" . $_POST['date_of_dismissal'] . "',").
         $_POST['status'] . ',' .
         "'" . $_POST['second_name'] . "',".
         "'" . $_POST['patronymic']
